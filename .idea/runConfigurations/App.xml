@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="App" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="CONNECTION" value="jdbc:postgresql://34.121.107.181:5432/Expenses?user=ldeyoung&amp;password=lilsarahd" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="dev.deyoung.apps.App" />
+    <module name="LeahDeYoungExpensesProject1.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="dev.deyoung.apps.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

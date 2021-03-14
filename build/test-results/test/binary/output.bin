@@ -1,0 +1,38 @@
+†Hibernate: insert into login (director_id, employee_id, first_name, last_name, manager_id, user_password, user_role, username) values (?, ?, ?, ?, ?, ?, ?, ?)
+∂Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}
+gretchenwieners
+ÊHibernate: select login0_.user_id as user_id1_3_, login0_.director_id as director2_3_, login0_.employee_id as employee3_3_, login0_.first_name as first_na4_3_, login0_.last_name as last_nam5_3_, login0_.manager_id as manager_6_3_, login0_.user_password as user_pas7_3_, login0_.user_role as user_rol8_3_, login0_.username as username9_3_ from login login0_
+êHibernate: select login0_.user_id as user_id1_3_0_, login0_.director_id as director2_3_0_, login0_.employee_id as employee3_3_0_, login0_.first_name as first_na4_3_0_, login0_.last_name as last_nam5_3_0_, login0_.manager_id as manager_6_3_0_, login0_.user_password as user_pas7_3_0_, login0_.user_role as user_rol8_3_0_, login0_.username as username9_3_0_ from login login0_ where login0_.user_id=?
+ÊHibernate: select login0_.user_id as user_id1_3_, login0_.director_id as director2_3_, login0_.employee_id as employee3_3_, login0_.first_name as first_na4_3_, login0_.last_name as last_nam5_3_, login0_.manager_id as manager_6_3_, login0_.user_password as user_pas7_3_, login0_.user_role as user_rol8_3_, login0_.username as username9_3_ from login login0_
+∏[Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}]
+∂Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}
+ÊHibernate: select login0_.user_id as user_id1_3_, login0_.director_id as director2_3_, login0_.employee_id as employee3_3_, login0_.first_name as first_na4_3_, login0_.last_name as last_nam5_3_, login0_.manager_id as manager_6_3_, login0_.user_password as user_pas7_3_, login0_.user_role as user_rol8_3_, login0_.username as username9_3_ from login login0_
+∂Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}
+∏[Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}]
+ÊHibernate: select login0_.user_id as user_id1_3_, login0_.director_id as director2_3_, login0_.employee_id as employee3_3_, login0_.first_name as first_na4_3_, login0_.last_name as last_nam5_3_, login0_.manager_id as manager_6_3_, login0_.user_password as user_pas7_3_, login0_.user_role as user_rol8_3_, login0_.username as username9_3_ from login login0_
+∂Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}
+∏[Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}]
+ÊHibernate: select login0_.user_id as user_id1_3_, login0_.director_id as director2_3_, login0_.employee_id as employee3_3_, login0_.first_name as first_na4_3_, login0_.last_name as last_nam5_3_, login0_.manager_id as manager_6_3_, login0_.user_password as user_pas7_3_, login0_.user_role as user_rol8_3_, login0_.username as username9_3_ from login login0_
+∂Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}
+∏[Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}]
+	ÊHibernate: select login0_.user_id as user_id1_3_, login0_.director_id as director2_3_, login0_.employee_id as employee3_3_, login0_.first_name as first_na4_3_, login0_.last_name as last_nam5_3_, login0_.manager_id as manager_6_3_, login0_.user_password as user_pas7_3_, login0_.user_role as user_rol8_3_, login0_.username as username9_3_ from login login0_
+	∂Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}
+	∏[Login{userId=6, username='gretchenwieners', password='toasterstrudel', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}]
+
+ùHibernate: update login set director_id=?, employee_id=?, first_name=?, last_name=?, manager_id=?, user_password=?, user_role=?, username=? where user_id=?
+
+thatIsSoFetch!
+
+∂Login{userId=6, username='gretchenwieners', password='thatIsSoFetch!', userRole='Employee', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}
+ùHibernate: update login set director_id=?, employee_id=?, first_name=?, last_name=?, manager_id=?, user_password=?, user_role=?, username=? where user_id=?
+	Manager
+µLogin{userId=6, username='gretchenwieners', password='thatIsSoFetch!', userRole='Manager', firstName='Gretchen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}
+ùHibernate: update login set director_id=?, employee_id=?, first_name=?, last_name=?, manager_id=?, user_password=?, user_role=?, username=? where user_id=?
+Karen
+≤Login{userId=6, username='gretchenwieners', password='thatIsSoFetch!', userRole='Manager', firstName='Karen', lastName='Wieners', employeeId='3', managerId='4', directorId='2'}
+ùHibernate: update login set director_id=?, employee_id=?, first_name=?, last_name=?, manager_id=?, user_password=?, user_role=?, username=? where user_id=?
+Smith
+∞Login{userId=6, username='gretchenwieners', password='thatIsSoFetch!', userRole='Manager', firstName='Karen', lastName='Smith', employeeId='3', managerId='4', directorId='2'}
+êHibernate: select login0_.user_id as user_id1_3_0_, login0_.director_id as director2_3_0_, login0_.employee_id as employee3_3_0_, login0_.first_name as first_na4_3_0_, login0_.last_name as last_nam5_3_0_, login0_.manager_id as manager_6_3_0_, login0_.user_password as user_pas7_3_0_, login0_.user_role as user_rol8_3_0_, login0_.username as username9_3_0_ from login login0_ where login0_.user_id=?
+.Hibernate: delete from login where user_id=?
+6
