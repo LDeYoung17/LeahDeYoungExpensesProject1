@@ -1,13 +1,14 @@
 package dev.deyoung.servicetests;
 
 import dev.deyoung.daos.ExpensesDaoHibernate;
+import dev.deyoung.entities.Employees;
 import dev.deyoung.entities.Expenses;
+import dev.deyoung.entities.Managers;
 import dev.deyoung.services.ExpensesServiceImpl;
 import dev.deyoung.services.ExpensesServices;
 import org.junit.jupiter.api.*;
 import java.util.HashSet;
 import java.util.Set;
-import org.mockito.Mock;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
@@ -15,14 +16,16 @@ public class ExpensesServiceTest {
 
 
     private static Expenses testExpense = null;
-    @Mock
-    ExpensesServices expenseService = new ExpensesServiceImpl(new ExpensesDaoHibernate());
+    private static ExpensesServices expenseService = new ExpensesServiceImpl(new ExpensesDaoHibernate());
+    Managers manager = new Managers(0, "Janis", "Ian", "The Coolest People You'll Ever Meet", "reginageorge", "isbutteracarb");
+    Employees employee = new Employees(0, "Gretchen", "Wieners", "The Coolest People You'll Ever Meet", 1, "gretchenwieners", "toasterstrudel");
+
 
     @Test
     @Order(1)
 
     void create_expense_in_service(){
-        Expenses expense = new Expenses(0, 50.00, "haircare", 20041003, 3, 4, 2, "Pending", 20041003, "none");
+        Expenses expense = new Expenses(0, 50.00, "haircare", 20041003, 1, 1,  "Pending", 20041003, "none");
         expenseService.newExpense(expense);
 
         System.out.println(expense);
@@ -128,19 +131,6 @@ public class ExpensesServiceTest {
 
     }
 
-    @Test
-    @Order(9)
-
-    void get_expense_by_director_id(){
-        Expenses expense = testExpense;
-        Set<Expenses> expenseByDirectorId = new HashSet<>(expenseService.getExpenseByDirectorId(expense.getDirectorId()));
-        System.out.println(expenseByDirectorId);
-        System.out.println(expense);
-
-        Assertions.assertFalse(expenseByDirectorId.isEmpty());
-
-
-    }
 
 
 
@@ -206,6 +196,27 @@ public class ExpensesServiceTest {
 
     @Test
     @Order(15)
+    void get_manager_username(){
+        Managers managerInService = expenseService.getManagerByUsername(manager.getUsername());
+
+        Assertions.assertEquals(managerInService.getLastName(), manager.getLastName());
+
+
+    }
+
+    @Test
+    @Order(16)
+    void get_employee_username(){
+
+        Employees employeeInService = expenseService.getEmployeeByUsername(employee.getUsername());
+
+        Assertions.assertEquals(employeeInService.getLastName(), employee.getLastName());
+
+    }
+
+
+    @Test
+    @Order(17)
 
     void delete_expense(){
 

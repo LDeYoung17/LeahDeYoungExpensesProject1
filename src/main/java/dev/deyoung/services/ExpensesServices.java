@@ -1,6 +1,9 @@
 package dev.deyoung.services;
 
+import dev.deyoung.entities.Employees;
 import dev.deyoung.entities.Expenses;
+import dev.deyoung.entities.Managers;
+
 import java.util.Set;
 
 public interface ExpensesServices {
@@ -16,7 +19,8 @@ public interface ExpensesServices {
     Set<Expenses> getExpenseByStatusDate(int statusDate);
     Set<Expenses> getExpenseByStatus(String status);
     Set<Expenses> getExpenseByManagerId(int managerId);
-    Set<Expenses> getExpenseByDirectorId(int directorId);
+    Employees getEmployeeByUsername(String username);
+    Managers getManagerByUsername(String username);
 
 
     //Update

@@ -1,6 +1,8 @@
 package dev.deyoung.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name= "expenses")
@@ -29,10 +31,6 @@ public class Expenses {
     @Column(name ="manager_id")
     int managerId;
 
-    @Column(name ="director_id")
-    @JoinColumn(name = "director_id")
-    int directorId;
-
     @Column(name ="status")
     String status;
 
@@ -42,17 +40,22 @@ public class Expenses {
     @Column(name ="manager_notes")
     String managerNotes;
 
+//
+//    @OneToMany(mappedBy = "employeeId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private Set<Employees> employees = new HashSet<Employees>();
+//    @OneToMany(mappedBy = "managerId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private Set<Managers> managers = new HashSet<Managers>();
+
     public Expenses() {
     }
 
-    public Expenses(int expenseId, double expenseAmount, String reason, int dateSubmitted, int employeeId, int managerId, int directorId, String status, int statusDate, String managerNotes) {
+    public Expenses(int expenseId, double expenseAmount, String reason, int dateSubmitted, int employeeId, int managerId, String status, int statusDate, String managerNotes) {
         this.expenseId = expenseId;
         this.expenseAmount = expenseAmount;
         this.reason = reason;
         this.dateSubmitted = dateSubmitted;
         this.employeeId = employeeId;
         this.managerId = managerId;
-        this.directorId = directorId;
         this.status = status;
         this.statusDate = statusDate;
         this.managerNotes = managerNotes;
@@ -106,14 +109,6 @@ public class Expenses {
         this.managerId = managerId;
     }
 
-    public int getDirectorId() {
-        return directorId;
-    }
-
-    public void setDirectorId(int directorId) {
-        this.directorId = directorId;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -147,7 +142,6 @@ public class Expenses {
                 ", dateSubmitted=" + dateSubmitted +
                 ", employeeId=" + employeeId +
                 ", managerId=" + managerId +
-                ", directorId=" + directorId +
                 ", status='" + status + '\'' +
                 ", statusDate=" + statusDate +
                 ", managerNotes='" + managerNotes + '\'' +

@@ -27,11 +27,15 @@ public class Employees {
     @Column(name ="manager_id")
     private int managerId;
 
-    @Column(name ="director_id")
-    private int directorId;
+    @JoinColumn(name = "username")
+    @Column(name ="username")
+    private String username;
 
-    @OneToMany(mappedBy = "employeeId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Login> login = new HashSet<Login>();
+    @Column(name ="user_password")
+    private String password;
+
+//    @OneToMany(mappedBy = "username", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private Set<Login> login = new HashSet<Login>();
 
     @OneToMany(mappedBy = "employeeId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Expenses> expenses = new HashSet<Expenses>();
@@ -39,13 +43,14 @@ public class Employees {
     public Employees() {
     }
 
-    public Employees(int employeeId, String firstName, String lastName, String department, int managerId, int directorId) {
+    public Employees(int employeeId, String firstName, String lastName, String department, int managerId, String username, String password) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
         this.managerId = managerId;
-        this.directorId = directorId;
+        this.username = username;
+        this.password = password;
     }
 
     public int getEmployeeId() {
@@ -88,12 +93,20 @@ public class Employees {
         this.managerId = managerId;
     }
 
-    public int getDirectorId() {
-        return directorId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setDirectorId(int directorId) {
-        this.directorId = directorId;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -104,7 +117,8 @@ public class Employees {
                 ", lastName='" + lastName + '\'' +
                 ", department='" + department + '\'' +
                 ", managerId=" + managerId +
-                ", directorId=" + directorId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

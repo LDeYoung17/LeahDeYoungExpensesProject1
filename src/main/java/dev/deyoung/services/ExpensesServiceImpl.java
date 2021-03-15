@@ -1,10 +1,13 @@
 package dev.deyoung.services;
 
 import dev.deyoung.controllers.ExpenseController;
-import dev.deyoung.daos.ExpensesDAO;
+import dev.deyoung.daos.*;
+import dev.deyoung.entities.Employees;
 import dev.deyoung.entities.Expenses;
 import java.util.HashSet;
 import java.util.Set;
+
+import dev.deyoung.entities.Managers;
 import org.apache.log4j.Logger;
 
 public class ExpensesServiceImpl implements ExpensesServices{
@@ -13,8 +16,12 @@ public class ExpensesServiceImpl implements ExpensesServices{
     private static Logger logger = Logger.getLogger(ExpenseController.class.getName());
 
     private ExpensesDAO expenseDAO;
+    private EmployeeDAO employeeDAO = new EmployeeDaoHibernate();
+    private ManagerDAO managerDAO = new ManagerDaoHibernate();
+
 
     public ExpensesServiceImpl(ExpensesDAO expenseDAO) {this.expenseDAO = expenseDAO;}
+
 
     @Override
     public Expenses newExpense(Expenses expense) {
@@ -136,23 +143,14 @@ public class ExpensesServiceImpl implements ExpensesServices{
     }
 
     @Override
-    public Set<Expenses> getExpenseByDirectorId(int directorId) {
-        Set<Expenses> allExpenses = this.expenseDAO.getExpenses();
-        Set<Expenses> expenseByDirectorId = new HashSet<Expenses>();
+    public Employees getEmployeeByUsername(String username) {
+        return this.employeeDAO.getEmployeeByUsername(username);
+    }
 
-        for(Expenses expense : allExpenses) {
-            try {
-                if (expense.getDirectorId() == directorId) {
-                    expenseByDirectorId.add(expense);
-                    logger.info("Grabbed expenses by Director ID in the service.");
-
-                }
-            }catch(Exception e){
-                logger.error(e);
-            }
-
-        }
-        return expenseByDirectorId;    }
+    @Override
+    public Managers getManagerByUsername(String username) {
+        return this.managerDAO.getManagerByUsername(username);
+    }
 
     @Override
     public Expenses updateExpenseAmount(Expenses expense, double expenseAmount) {

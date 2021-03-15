@@ -1,5 +1,6 @@
 package dev.deyoung.daos;
 
+import dev.deyoung.entities.Employees;
 import dev.deyoung.entities.Managers;
 
 import java.util.Set;
@@ -11,12 +12,14 @@ public interface ManagerDAO {
 
     //Read
     Set<Managers> getManagers();
-    Managers getManagerById(int id);
+//    Managers getManagerById(int id);
+    Managers getManagerByUsername(String username);
+
 
     //Update
-    Managers updateManager(Managers manager);
+//    Managers updateManager(Managers manager);
 
     //Delete
-    boolean deleteManagerById(int id);
+//    boolean deleteManagerById(int id);
 
 }

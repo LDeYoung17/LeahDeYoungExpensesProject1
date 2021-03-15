@@ -1,12 +1,13 @@
 package dev.deyoung.daos;
 
-import dev.deyoung.entities.Directors;
+import dev.deyoung.controllers.ExpenseController;
 import dev.deyoung.entities.Managers;
 import dev.deyoung.Utils.HibernateUtil;
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
+import org.hibernate.query.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -18,6 +19,7 @@ import java.util.Set;
 public class ManagerDaoHibernate implements  ManagerDAO{
 
     private SessionFactory sf = HibernateUtil.createSF();
+    private static Logger logger = Logger.getLogger(ExpenseController.class.getName());
 
     @Override
     public Managers createManager(Managers manager) {
@@ -27,9 +29,11 @@ public class ManagerDaoHibernate implements  ManagerDAO{
             sesh.save(manager);
             sesh.getTransaction().commit();
             sesh.close();
+            logger.info("Created manager in the DAO");
             return manager;
         }catch(HibernateException he){
             he.printStackTrace();
+            logger.error(he);
             return null;
         }
     }
@@ -47,55 +51,33 @@ public class ManagerDaoHibernate implements  ManagerDAO{
             TypedQuery<Managers> allQuery = sesh.createQuery(all);
             List<Managers> resultList = allQuery.getResultList();
             Set <Managers> managers = new HashSet<>(resultList);
+            logger.info("Got all managers in the DAO successfully");
             return managers;
         }catch (HibernateException he){
             he.printStackTrace();
+            logger.error(he);
             return null;
         }
     }
 
     @Override
-    public Managers getManagerById(int id){
+    public Managers getManagerByUsername(String username) {
         try{
             Session sesh = sf.openSession();
-            Managers manager = sesh.get(Managers.class,id);
+            String hql = "from Managers m where m.username = :username";
+
+            Query query = sesh.createQuery(hql);
+            query.setParameter("username", username);
+            List<Managers> managers = query.list();
+            Managers manager = managers.get(0);
             sesh.close();
+            logger.info("Got the manager by username in the DAO");
             return manager;
         }catch (HibernateException he){
             he.printStackTrace();
+            logger.error(he);
             return null;
         }
-    }
-
-    @Override
-    public Managers updateManager(Managers manager) {
-        try{
-            Session sesh = sf.openSession();
-            sesh.getTransaction().begin();
-            sesh.update(manager);
-            sesh.getTransaction().commit();
-            sesh.close();
-            return manager;
-        }catch (HibernateException he){
-            he.printStackTrace();
-            return null;
-        }
-    }
-
-    @Override
-   public boolean deleteManagerById(int id){
-        try{
-            Session sesh = sf.openSession();
-            sesh.getTransaction().begin();
-            sesh.delete(this.getManagerById(id));
-            sesh.getTransaction().commit();
-            sesh.close();
-            return true;
-        }catch (HibernateException he){
-            he.printStackTrace();
-            return false;
-        }
-
     }
 
 }

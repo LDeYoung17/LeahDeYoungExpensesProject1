@@ -16,7 +16,6 @@
         this is entirely a devlopment/testing feature NEVER have this in a completed application -->
         <property name="hibernate.show_sql">true</property>
 
-        <mapping class="dev.deyoung.entities.Directors"/>
         <mapping class="dev.deyoung.entities.Managers"/>
         <mapping class="dev.deyoung.entities.Employees"/>
         <mapping class="dev.deyoung.entities.Expenses"/>

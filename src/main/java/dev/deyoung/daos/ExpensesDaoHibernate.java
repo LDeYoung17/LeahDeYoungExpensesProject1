@@ -31,7 +31,7 @@ public class ExpensesDaoHibernate implements ExpensesDAO{
             sesh.getTransaction().commit();
 
 //            sesh.getTransaction().begin();
-//            String hql = "UPDATE Expense as e " + "SET e.managerId = :emp.managerId, e.directorId = :emp.directorId, " + "LEFT JOIN Employee emp ON emp.employeeId = e.employeeId " + "WHERE e.employeeId :?";
+//            String hql = "UPDATE Expense as e " + "SET e.managerId = :emp.managerId" + "LEFT JOIN Employee emp ON emp.employeeId = e.employeeId " + "WHERE e.employeeId :?";
 //            Query query = sesh.createQuery(hql);
 //            List<Expenses> expenses = query.list();
 //            expense = expenses.get(0);

@@ -5,6 +5,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import dev.deyoung.controllers.ExpenseController;
+import dev.deyoung.entities.Employees;
+import dev.deyoung.entities.Managers;
 import org.apache.log4j.Logger;
 
 public class JWTUtil {
@@ -13,13 +15,27 @@ public class JWTUtil {
     private static Logger logger = Logger.getLogger(ExpenseController.class.getName());
 
 
-    public static String generate(String role, String employeeName) {
+    public static String generate(String role, Employees employee) {
 
         String token = JWT.create()
                 .withClaim("role", role)
-                .withClaim("empName", employeeName)
+                .withClaim("id", employee.getEmployeeId())
+                .withClaim("firstName", employee.getFirstName())
+                .withClaim("lastName", employee.getLastName())
                 .sign(algorithm);
-        logger.info("Created JWT in util.");
+        logger.info("Created employee JWT in util.");
+        return token;
+    }
+
+    public static String createManagerToken(String role, Managers manager) {
+
+        String token = JWT.create()
+                .withClaim("role", role)
+                .withClaim("id", manager.getManagerId())
+                .withClaim("firstName", manager.getFirstName())
+                .withClaim("lastName", manager.getLastName())
+                .sign(algorithm);
+        logger.info("Created manager JWT in util.");
         return token;
     }
 

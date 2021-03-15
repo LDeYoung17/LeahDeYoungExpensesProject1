@@ -24,29 +24,35 @@ public class Managers {
     @Column(name = "department")
     private String department;
 
-    @Column(name ="director_id")
-    @JoinColumn(name = "director_id")
-    private int directorId;
+    @JoinColumn(name = "username")
+    @Column(name = "username")
+    private String username;
 
-//    @OneToMany(mappedBy = "managerId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private Set<Employees> employees = new HashSet<Employees>();
-//
-//    @OneToMany(mappedBy = "managerId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Column(name = "user_password")
+    private String password;
+
+
+
+//    @OneToMany(mappedBy = "username", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    private Set<Login> login = new HashSet<Login>();
-//
-//    @OneToMany(mappedBy = "managerId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private Set<Expenses> expenses = new HashSet<Expenses>();
+
+    @OneToMany(mappedBy = "managerId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Employees> employees = new HashSet<Employees>();
+
+    @OneToMany(mappedBy = "managerId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Expenses> expenses = new HashSet<Expenses>();
 
 
     public Managers() {
     }
 
-    public Managers(int managerId, String firstName, String lastName, String department, int directorId) {
+    public Managers(int managerId, String firstName, String lastName, String department, String username, String password) {
         this.managerId = managerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
-        this.directorId = directorId;
+        this.username = username;
+        this.password = password;
     }
 
     public int getManagerId() {
@@ -78,13 +84,20 @@ public class Managers {
     public void setDepartment(String department) {
         this.department = department;
     }
-
-    public int getDirectorId() {
-        return directorId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setDirectorId(int directorId) {
-        this.directorId = directorId;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -94,7 +107,8 @@ public class Managers {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", department='" + department + '\'' +
-                ", directorId='" + directorId + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

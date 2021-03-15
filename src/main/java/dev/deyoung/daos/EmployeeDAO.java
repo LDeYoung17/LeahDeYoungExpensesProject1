@@ -11,12 +11,6 @@ public interface EmployeeDAO {
 
     //Read
     Set<Employees> getEmployees();
-    Employees getEmployeeById(int id);
-
-    //Update
-    Employees updateEmployee(Employees employee);
-
-    //Delete
-    boolean deleteEmployeeById(int id);
+    Employees getEmployeeByUsername(String username);
 
 }
