@@ -38,12 +38,12 @@ public class LoginController {
                 if(username.equals(manager.getUsername())){
                     String jwtManager = JWTUtil.createManagerToken("Manager", manager);
                     ctx.result(jwtManager);
-                    logger.info("Created manager JWT");
+                    logger.info("Login by " + manager.getUsername() + " , Manager ID " + manager.getManagerId());
                 }else{
                     for(Employees employee : allEmployees) {
                         String jwtEmployee = JWTUtil.generate("Employee", employee);
                         ctx.result(jwtEmployee);
-                        logger.info("Created employee JWT");
+                        logger.info("Login by " + employee.getUsername() + " , Employee ID " + employee.getManagerId());
 
                     }
                 }

@@ -21,10 +21,10 @@ public class ManagerDaoTest {
     @Order(1)
     void create_manager(){
 
-        Managers JanisIan = new Managers(0, "Janis", "Ian", "The Coolest People You'll Ever Meet", "gretchenwieners", "helloThere");
+        Managers JanisIan = new Managers(0, "Kevin", "G", "Mathletes", "keving", "mathletes");
         managerDAO.createManager(JanisIan);
         System.out.println(JanisIan);
-        Assertions.assertEquals(JanisIan.getLastName(), "Ian");
+        Assertions.assertEquals(JanisIan.getLastName(), "G");
         testManager = JanisIan;
         System.out.println(testManager);
     }
@@ -38,20 +38,9 @@ public class ManagerDaoTest {
 
     }
 
-//    @Test
-//    @Order(3)
-//    void get_manager_by_id(){
-//
-//        int managerId = testManager.getManagerId();
-//        System.out.println(managerId);
-//        Managers manager = managerDAO.getManagerById(managerId);
-//        Assertions.assertEquals(manager.getUsername(), testManager.getUsername());
-//
-//
-//    }
 
     @Test
-    @Order(4)
+    @Order(3)
     void get_manager_by_username(){
 
         String username = testManager.getUsername();
@@ -61,45 +50,5 @@ public class ManagerDaoTest {
 
 
     }
-
-
-
-//    @Test
-//    @Order(5)
-//    void update_manager(){
-//
-//        Managers manager = managerDAO.getManagerById(testManager.getManagerId());
-//        manager.setLastName("G");
-//
-//        managerDAO.updateManager(manager);
-//        Managers updatedManager = managerDAO.getManagerById(manager.getManagerId());
-//        Assertions.assertEquals(updatedManager.getManagerId(), manager.getManagerId());
-//        System.out.println("Manager ID " + testManager.getManagerId() + "'s last name has been updated to " + testManager.getLastName());
-//
-//
-//    }
-
-
-
-
-//    @Test
-//    @Order(6)
-//    void delete_manager(){
-//
-//        int managerId = testManager.getManagerId();
-//        System.out.println(managerId);
-//        boolean deleted = managerDAO.deleteManagerById(managerId);
-//        System.out.println(deleted);
-//
-//        Assertions.assertTrue(deleted);
-//
-//
-//
-//
-//    }
-
-
-
-
 
 }

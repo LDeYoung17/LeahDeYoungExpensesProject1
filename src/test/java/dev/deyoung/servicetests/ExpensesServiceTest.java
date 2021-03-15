@@ -17,8 +17,8 @@ public class ExpensesServiceTest {
 
     private static Expenses testExpense = null;
     private static ExpensesServices expenseService = new ExpensesServiceImpl(new ExpensesDaoHibernate());
-    Managers manager = new Managers(0, "Janis", "Ian", "The Coolest People You'll Ever Meet", "reginageorge", "isbutteracarb");
-    Employees employee = new Employees(0, "Gretchen", "Wieners", "The Coolest People You'll Ever Meet", 1, "gretchenwieners", "toasterstrudel");
+    Managers manager = new Managers(0, "Michigan", "Girl", "Somewhere in Michigan", "michigangirl", "imfrommichigan");
+    Employees employee = new Employees(0, "Michigan", "Girlsfriend", "Somewhere in Michigan", 1, "michigangirlsfriend", "alsofrommichigan");
 
 
     @Test
